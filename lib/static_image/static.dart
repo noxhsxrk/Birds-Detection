@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:furniture_app/screens/details.dart';
@@ -69,6 +70,17 @@ class _StaticImageState extends State<StaticImage> {
     });
   }
 
+  startTimer() {
+    var duration = Duration(seconds: 2);
+    return new Timer(duration, route);
+  }
+
+  route() {
+    check();
+    Navigator.pushReplacement(context,
+        MaterialPageRoute(builder: (context) => Details(birdIndex: index)));
+  }
+
   void check() {
     debugPrint('class : $detectedClass');
     if (detectedClass == "NICOBAR PIGEON") {
@@ -108,6 +120,7 @@ class _StaticImageState extends State<StaticImage> {
 
     return _recognitions.map((re) {
       detectedClass = re["detectedClass"];
+      startTimer();
       return Container(
         child: Positioned(
             left: re["rect"]["x"] * factorX,
@@ -156,19 +169,19 @@ class _StaticImageState extends State<StaticImage> {
               ? Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Image.file(_image),
                   SizedBox(height: 50.0),
-                  ElevatedButton(
-                    child: Text("ดูข้อมูล"),
-                    onPressed: () {
-                      check();
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return Details(birdIndex: index);
-                          },
-                        ),
-                      );
-                    },
-                  ),
+                  // ElevatedButton(
+                  //   child: Text("ดูข้อมูล"),
+                  //   onPressed: () {
+                  //     check();
+                  //     Navigator.of(context).push(
+                  //       MaterialPageRoute(
+                  //         builder: (BuildContext context) {
+                  //           return Details(birdIndex: index);
+                  //         },
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
                 ])
               : Container(),
     ));

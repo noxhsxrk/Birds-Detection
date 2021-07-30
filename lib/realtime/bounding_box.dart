@@ -1,5 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
+import 'package:furniture_app/static_image/static.dart';
+import 'package:furniture_app/util/data.dart';
+import 'package:furniture_app/screens/details.dart';
 
 class BoundingBox extends StatelessWidget {
   final List<dynamic> results;

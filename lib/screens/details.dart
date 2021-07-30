@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:furniture_app/screens/main_screen.dart';
 import 'package:furniture_app/util/data.dart';
 import 'package:furniture_app/widgets/product_item.dart';
 
@@ -73,6 +74,12 @@ class _DetailsState extends State<Details> {
                 ),
               ),
               SizedBox(height: 10.0),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => MainScreen()));
+                  },
+                  child: Text("ย้อนกลับ"))
               //buildProductList(),
             ],
           ),
