@@ -1,9 +1,7 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:furniture_app/main.dart';
 import 'dart:math' as math;
-import 'package:furniture_app/static_image/static.dart';
-import 'package:furniture_app/util/data.dart';
+import 'package:furniture_app/realtime/live_camera.dart';
 import 'package:furniture_app/screens/details.dart';
 
 class BoundingBox extends StatelessWidget {
@@ -12,6 +10,7 @@ class BoundingBox extends StatelessWidget {
   final int previewW;
   final double screenH;
   final double screenW;
+  int index;
 
   BoundingBox(
     this.results,
@@ -23,6 +22,38 @@ class BoundingBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void check() {
+      if (results[0]['detectedClass'] == "NICOBAR PIGEON") {
+        index = 0;
+      } else if (results[0]['detectedClass'] == "PARAKEET") {
+        index = 1;
+      } else if (results[0]['detectedClass'] == "PEACOCK") {
+        index = 2;
+      } else if (results[0]['detectedClass'] == "HOOPOES") {
+        index = 3;
+      } else if (results[0]['detectedClass'] == "GREY PLOVER") {
+        index = 4;
+      } else if (results[0]['detectedClass'] == "PELICAN") {
+        index = 5;
+      } else if (results[0]['detectedClass'] == "WHIMBREL") {
+        index = 6;
+      } else if (results[0]['detectedClass'] == "CANARY") {
+        index = 7;
+      } else if (results[0]['detectedClass'] == "GREEN JAVAN MAGPIE") {
+        index = 8;
+      } else if (results[0]['detectedClass'] == "BARN OWL") {
+        index = 9;
+      }
+
+      debugPrint('class : $index');
+    }
+
+    route() {
+      check();
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => Details(birdIndex: index)));
+    }
+
     List<Widget> _renderBox() {
       return results.map((re) {
         var _x = re["rect"]["x"];
@@ -52,28 +83,32 @@ class BoundingBox extends StatelessWidget {
         }
 
         return Positioned(
-          left: math.max(0, x),
-          top: math.max(0, y),
-          width: w,
-          height: h,
-          child: Container(
-            padding: EdgeInsets.only(top: 5.0, left: 5.0),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Color.fromRGBO(37, 213, 253, 1.0),
-                width: 3.0,
+            left: math.max(0, x),
+            top: math.max(0, y),
+            width: w,
+            height: h,
+            child: Container(
+              padding: EdgeInsets.only(top: 5.0, left: 5.0),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Color.fromRGBO(37, 213, 253, 1.0),
+                  width: 3.0,
+                ),
               ),
-            ),
-            child: Text(
-              "${re["detectedClass"]} ${(re["confidenceInClass"] * 100).toStringAsFixed(0)}%",
-              style: TextStyle(
-                color: Color.fromRGBO(37, 213, 253, 1.0),
-                fontSize: 14.0,
-                fontWeight: FontWeight.bold,
+              child: InkWell(
+                onTap: () {
+                  route();
+                },
+                child: Text(
+                  "${re["detectedClass"]} ${(re["confidenceInClass"] * 100).toStringAsFixed(0)}%",
+                  style: TextStyle(
+                    color: Color.fromRGBO(37, 213, 253, 1.0),
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-            ),
-          ),
-        );
+            ));
       }).toList();
     }
 
