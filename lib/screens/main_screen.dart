@@ -32,6 +32,8 @@ class _MainScreenState extends State<MainScreen> {
       _currentIndex = 0;
     } else if (pageIndex == "live") {
       _currentIndex = 1;
+    } else if (pageIndex == "static") {
+      _currentIndex = 2;
     }
     return Scaffold(
       body: _children[_currentIndex],

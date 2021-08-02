@@ -72,8 +72,13 @@ class _StaticImageState extends State<StaticImage> {
 
   route(detectlass) {
     check(detectlass);
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context) => Details(birdIndex: index)));
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Details(
+                  birdIndex: index,
+                  pageIndex: "static",
+                )));
   }
 
   void check(detectclass) {
