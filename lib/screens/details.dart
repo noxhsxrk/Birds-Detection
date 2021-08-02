@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+
 import 'package:furniture_app/screens/main_screen.dart';
 import 'package:furniture_app/util/data.dart';
-import 'package:furniture_app/widgets/product_item.dart';
 
 class Details extends StatefulWidget {
   final int birdIndex;

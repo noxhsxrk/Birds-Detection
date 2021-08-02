@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:furniture_app/screens/home.dart';
 import 'package:furniture_app/static_image/static.dart';

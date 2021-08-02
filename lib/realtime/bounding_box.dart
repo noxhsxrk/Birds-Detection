@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:furniture_app/main.dart';
+
 import 'dart:math' as math;
-import 'package:furniture_app/realtime/live_camera.dart';
+
 import 'package:furniture_app/screens/details.dart';
 
 class BoundingBox extends StatelessWidget {
@@ -22,8 +22,36 @@ class BoundingBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void check() {
-      if (results[0]['detectedClass'] == "NICOBAR PIGEON") {
+    void check(detectclass) {
+      if (detectclass == "NICOBAR PIGEON") {
+        index = 0;
+      } else if (detectclass == "PARAKEET") {
+        index = 1;
+      } else if (detectclass == "PEACOCK") {
+        index = 2;
+      } else if (detectclass == "HOOPOES") {
+        index = 3;
+      } else if (detectclass == "GREY PLOVER") {
+        debugPrint("grey plover");
+        index = 4;
+      } else if (detectclass == "PELICAN") {
+        debugPrint("Pelican");
+        index = 5;
+      } else if (detectclass == "WHIMBREL") {
+        debugPrint("Whimbrel");
+        index = 6;
+      } else if (detectclass == "CANARY") {
+        debugPrint("Canary");
+        index = 7;
+      } else if (detectclass == "GREEN JAVAN MAGPIE") {
+        debugPrint("GREEN JAVAN MAGPIE");
+        index = 8;
+      } else if (detectclass == "BARN OWL") {
+        debugPrint("Barn Owl");
+        index = 9;
+      }
+
+      /* if (results[0]['detectedClass'] == "NICOBAR PIGEON") {
         index = 0;
       } else if (results[0]['detectedClass'] == "PARAKEET") {
         index = 1;
@@ -43,13 +71,11 @@ class BoundingBox extends StatelessWidget {
         index = 8;
       } else if (results[0]['detectedClass'] == "BARN OWL") {
         index = 9;
-      }
-
-      debugPrint('class : $index');
+      } */
     }
 
-    route() {
-      check();
+    route(detectlass) {
+      check(detectlass);
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (context) => Details(birdIndex: index)));
     }
@@ -97,7 +123,7 @@ class BoundingBox extends StatelessWidget {
               ),
               child: InkWell(
                 onTap: () {
-                  route();
+                  route(re["detectedClass"]);
                 },
                 child: Text(
                   "${re["detectedClass"]} ${(re["confidenceInClass"] * 100).toStringAsFixed(0)}%",

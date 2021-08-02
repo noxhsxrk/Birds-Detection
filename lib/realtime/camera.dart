@@ -1,12 +1,7 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:tflite/tflite.dart';
 import 'dart:math' as math;
-import 'package:furniture_app/static_image/static.dart';
-import 'package:furniture_app/util/data.dart';
-import 'package:furniture_app/screens/details.dart';
 
 typedef void Callback(List<dynamic> list, int h, int w);
 

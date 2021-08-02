@@ -1,14 +1,9 @@
-import 'dart:async';
-
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:furniture_app/realtime/bounding_box.dart';
 import 'package:furniture_app/realtime/camera.dart';
 import 'dart:math' as math;
 import 'package:tflite/tflite.dart';
-import 'package:furniture_app/static_image/static.dart';
-import 'package:furniture_app/util/data.dart';
-import 'package:furniture_app/screens/details.dart';
 
 class LiveFeed extends StatefulWidget {
   final List<CameraDescription> cameras;
