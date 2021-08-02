@@ -70,42 +70,40 @@ class _StaticImageState extends State<StaticImage> {
     });
   }
 
-  startTimer() {
-    var duration = Duration(seconds: 2);
-    return new Timer(duration, route);
-  }
-
-  route() {
-    check();
+  route(detectlass) {
+    check(detectlass);
     Navigator.pushReplacement(context,
         MaterialPageRoute(builder: (context) => Details(birdIndex: index)));
   }
 
-  void check() {
-    debugPrint('class : $detectedClass');
-    if (detectedClass == "NICOBAR PIGEON") {
+  void check(detectclass) {
+    if (detectclass == "NICOBAR PIGEON") {
       index = 0;
-    } else if (detectedClass == "PARAKEET") {
+    } else if (detectclass == "PARAKEET") {
       index = 1;
-    } else if (detectedClass == "PEACOCK") {
+    } else if (detectclass == "PEACOCK") {
       index = 2;
-    } else if (detectedClass == "HOOPOES") {
+    } else if (detectclass == "HOOPOES") {
       index = 3;
-    } else if (detectedClass == "GREY PLOVER") {
+    } else if (detectclass == "GREY PLOVER") {
+      debugPrint("grey plover");
       index = 4;
-    } else if (detectedClass == "PELICAN") {
+    } else if (detectclass == "PELICAN") {
+      debugPrint("Pelican");
       index = 5;
-    } else if (detectedClass == "WHIMBREL") {
+    } else if (detectclass == "WHIMBREL") {
+      debugPrint("Whimbrel");
       index = 6;
-    } else if (detectedClass == "CANARY") {
+    } else if (detectclass == "CANARY") {
+      debugPrint("Canary");
       index = 7;
-    } else if (detectedClass == "GREEN JAVAN MAGPIE") {
+    } else if (detectclass == "GREEN JAVAN MAGPIE") {
+      debugPrint("GREEN JAVAN MAGPIE");
       index = 8;
-    } else if (detectedClass == "BARN OWL") {
+    } else if (detectclass == "BARN OWL") {
+      debugPrint("Barn Owl");
       index = 9;
     }
-
-    debugPrint('class : $index');
   }
 
   // display the bounding boxes over the detected objects
@@ -120,7 +118,7 @@ class _StaticImageState extends State<StaticImage> {
 
     return _recognitions.map((re) {
       detectedClass = re["detectedClass"];
-      startTimer();
+
       return Container(
         child: Positioned(
             left: re["rect"]["x"] * factorX,
@@ -134,12 +132,17 @@ class _StaticImageState extends State<StaticImage> {
                       color: blue,
                       width: 3,
                     )),
-                    child: Text(
-                      "${re["detectedClass"]} ${(re["confidenceInClass"] * 100).toStringAsFixed(0)}%",
-                      style: TextStyle(
-                        background: Paint()..color = blue,
-                        color: Colors.white,
-                        fontSize: 15,
+                    child: InkWell(
+                      onTap: () {
+                        route(re["detectedClass"]);
+                      },
+                      child: Text(
+                        "${re["detectedClass"]} ${(re["confidenceInClass"] * 100).toStringAsFixed(0)}%",
+                        style: TextStyle(
+                          background: Paint()..color = blue,
+                          color: Colors.white,
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                   )
@@ -250,4 +253,10 @@ class _StaticImageState extends State<StaticImage> {
     });
     detectObject(_image);
   }
+}
+
+@override
+Widget build(BuildContext context) {
+  // TODO: implement build
+  throw UnimplementedError();
 }
