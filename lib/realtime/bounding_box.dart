@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'dart:math' as math;
 
-import 'package:furniture_app/screens/details.dart';
+import 'package:birds_detection/screens/details.dart';
 
 class BoundingBox extends StatelessWidget {
   final List<dynamic> results;
@@ -76,8 +76,13 @@ class BoundingBox extends StatelessWidget {
 
     route(detectlass) {
       check(detectlass);
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => Details(birdIndex: index)));
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Details(
+                    birdIndex: index,
+                    pageIndex: "live",
+                  )));
     }
 
     List<Widget> _renderBox() {

@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 
-import 'package:furniture_app/screens/main_screen.dart';
-import 'package:furniture_app/util/data.dart';
+import 'package:birds_detection/screens/main_screen.dart';
+import 'package:birds_detection/util/data.dart';
 
 class Details extends StatefulWidget {
   final int birdIndex;
+  final String pageIndex;
   @override
-  _DetailsState createState() => _DetailsState(birdIndex: birdIndex);
-  Details({this.birdIndex});
+  _DetailsState createState() =>
+      _DetailsState(birdIndex: birdIndex, pageIndex: pageIndex);
+  Details({this.birdIndex, this.pageIndex});
 }
 
 class _DetailsState extends State<Details> {
   int selectedPage = 0;
   int birdIndex;
-  _DetailsState({this.birdIndex});
+  String pageIndex;
+  _DetailsState({this.birdIndex, this.pageIndex});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,8 +78,11 @@ class _DetailsState extends State<Details> {
               SizedBox(height: 10.0),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => MainScreen()));
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                MainScreen(pageIndex: pageIndex)));
                   },
                   child: Text("ย้อนกลับ"))
               //buildProductList(),

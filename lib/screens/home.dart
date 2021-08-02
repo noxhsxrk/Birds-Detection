@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:furniture_app/util/data.dart';
+import 'package:birds_detection/util/data.dart';
 
-import 'package:furniture_app/widgets/room_item.dart';
+import 'package:birds_detection/widgets/bird_list.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -49,7 +49,7 @@ class _HomeState extends State<Home> {
         itemCount: birds.length,
         itemBuilder: (BuildContext context, int index) {
           Map bird = birds[index];
-          return RoomItem(
+          return BirdsList(
             bird: bird,
           );
         },

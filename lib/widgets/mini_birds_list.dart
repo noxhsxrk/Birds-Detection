@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../screens/details.dart';
 
-class ProductItem extends StatelessWidget {
+class MiniBirdsList extends StatelessWidget {
   final Map bird;
 
-  ProductItem({this.bird});
+  MiniBirdsList({this.bird});
 
   @override
   Widget build(BuildContext context) {

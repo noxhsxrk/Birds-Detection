@@ -1,28 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:furniture_app/screens/home.dart';
-import 'package:furniture_app/static_image/static.dart';
-import 'package:furniture_app/realtime/live_camera.dart';
-import 'package:furniture_app/main.dart';
+import 'package:birds_detection/screens/home.dart';
+import 'package:birds_detection/static_image/static.dart';
+import 'package:birds_detection/realtime/live_camera.dart';
+import 'package:birds_detection/main.dart';
 
 class MainScreen extends StatefulWidget {
+  final String pageIndex;
   @override
-  _MainScreenState createState() => _MainScreenState();
+  _MainScreenState createState() => _MainScreenState(pageIndex: pageIndex);
+  MainScreen({this.pageIndex});
 }
 
 class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
+  String pageIndex;
+  _MainScreenState({this.pageIndex});
 
   final List<Widget> _children = [Home(), LiveFeed(cameras), StaticImage()];
 
   void onTappedBar(int index) {
     setState(() {
       _currentIndex = index;
+      pageIndex = null;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    if (pageIndex == "home") {
+      _currentIndex = 0;
+    } else if (pageIndex == "live") {
+      _currentIndex = 1;
+    }
     return Scaffold(
       body: _children[_currentIndex],
       bottomNavigationBar: Theme(

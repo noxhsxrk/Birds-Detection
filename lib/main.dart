@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:furniture_app/screens/main_screen.dart';
-import 'package:furniture_app/util/const.dart';
+import 'package:birds_detection/screens/main_screen.dart';
+import 'package:birds_detection/util/const.dart';
 import 'package:camera/camera.dart';
 
 List<CameraDescription> cameras;

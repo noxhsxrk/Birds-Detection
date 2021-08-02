@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:furniture_app/screens/details.dart';
+import 'package:birds_detection/screens/details.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
-import 'package:furniture_app/util/data.dart';
+import 'package:birds_detection/util/data.dart';
 
 class StaticImage extends StatefulWidget {
   @override

@@ -29,6 +29,7 @@
 .pub/
 /build/
 /assets/models
+augment.py
 
 # Android related
 **/android/**/gradle-wrapper.jar

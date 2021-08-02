@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:furniture_app/util/data.dart';
+import 'package:birds_detection/util/data.dart';
 import '../screens/details.dart';
 
-class RoomItem extends StatelessWidget {
+class BirdsList extends StatelessWidget {
   final Map bird;
 
-  RoomItem({this.bird});
+  BirdsList({this.bird});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class RoomItem extends StatelessWidget {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (BuildContext context) {
-                return Details(birdIndex: bird['id']);
+                return Details(birdIndex: bird['id'], pageIndex: "home");
               },
             ),
           );
