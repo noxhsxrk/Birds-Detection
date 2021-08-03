@@ -32,46 +32,18 @@ class BoundingBox extends StatelessWidget {
       } else if (detectclass == "HOOPOES") {
         index = 3;
       } else if (detectclass == "GREY PLOVER") {
-        debugPrint("grey plover");
         index = 4;
       } else if (detectclass == "PELICAN") {
-        debugPrint("Pelican");
         index = 5;
       } else if (detectclass == "WHIMBREL") {
-        debugPrint("Whimbrel");
         index = 6;
       } else if (detectclass == "CANARY") {
-        debugPrint("Canary");
         index = 7;
       } else if (detectclass == "GREEN JAVAN MAGPIE") {
-        debugPrint("GREEN JAVAN MAGPIE");
         index = 8;
       } else if (detectclass == "BARN OWL") {
-        debugPrint("Barn Owl");
         index = 9;
       }
-
-      /* if (results[0]['detectedClass'] == "NICOBAR PIGEON") {
-        index = 0;
-      } else if (results[0]['detectedClass'] == "PARAKEET") {
-        index = 1;
-      } else if (results[0]['detectedClass'] == "PEACOCK") {
-        index = 2;
-      } else if (results[0]['detectedClass'] == "HOOPOES") {
-        index = 3;
-      } else if (results[0]['detectedClass'] == "GREY PLOVER") {
-        index = 4;
-      } else if (results[0]['detectedClass'] == "PELICAN") {
-        index = 5;
-      } else if (results[0]['detectedClass'] == "WHIMBREL") {
-        index = 6;
-      } else if (results[0]['detectedClass'] == "CANARY") {
-        index = 7;
-      } else if (results[0]['detectedClass'] == "GREEN JAVAN MAGPIE") {
-        index = 8;
-      } else if (results[0]['detectedClass'] == "BARN OWL") {
-        index = 9;
-      } */
     }
 
     route(detectlass) {

@@ -91,22 +91,16 @@ class _StaticImageState extends State<StaticImage> {
     } else if (detectclass == "HOOPOES") {
       index = 3;
     } else if (detectclass == "GREY PLOVER") {
-      debugPrint("grey plover");
       index = 4;
     } else if (detectclass == "PELICAN") {
-      debugPrint("Pelican");
       index = 5;
     } else if (detectclass == "WHIMBREL") {
-      debugPrint("Whimbrel");
       index = 6;
     } else if (detectclass == "CANARY") {
-      debugPrint("Canary");
       index = 7;
     } else if (detectclass == "GREEN JAVAN MAGPIE") {
-      debugPrint("GREEN JAVAN MAGPIE");
       index = 8;
     } else if (detectclass == "BARN OWL") {
-      debugPrint("Barn Owl");
       index = 9;
     }
   }
@@ -177,19 +171,6 @@ class _StaticImageState extends State<StaticImage> {
               ? Column(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Image.file(_image),
                   SizedBox(height: 50.0),
-                  // ElevatedButton(
-                  //   child: Text("ดูข้อมูล"),
-                  //   onPressed: () {
-                  //     check();
-                  //     Navigator.of(context).push(
-                  //       MaterialPageRoute(
-                  //         builder: (BuildContext context) {
-                  //           return Details(birdIndex: index);
-                  //         },
-                  //       ),
-                  //     );
-                  //   },
-                  // ),
                 ])
               : Container(),
     ));
@@ -234,7 +215,7 @@ class _StaticImageState extends State<StaticImage> {
 
   // gets image from camera and runs detectObject
   Future getImageFromCamera() async {
-    final pickedFile = await picker.getImage(source: ImageSource.camera);
+    final pickedFile = await picker.pickImage(source: ImageSource.camera);
 
     setState(() {
       if (pickedFile != null) {
@@ -248,7 +229,7 @@ class _StaticImageState extends State<StaticImage> {
 
   // gets image from gallery and runs detectObject
   Future getImageFromGallery() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     setState(() {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
@@ -262,6 +243,5 @@ class _StaticImageState extends State<StaticImage> {
 
 @override
 Widget build(BuildContext context) {
-  // TODO: implement build
   throw UnimplementedError();
 }

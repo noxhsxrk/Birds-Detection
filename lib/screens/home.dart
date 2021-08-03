@@ -34,7 +34,7 @@ class _HomeState extends State<Home> {
           SizedBox(height: 10.0),
           SizedBox(height: 30.0),
           buildList(),
-          //SizedBox(height: 20.0),
+
         ],
       ),
     );
