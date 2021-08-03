@@ -117,7 +117,6 @@ class _StaticImageState extends State<StaticImage> {
 
     return _recognitions.map((re) {
       detectedClass = re["detectedClass"];
-
       return Container(
         child: Positioned(
             left: re["rect"]["x"] * factorX,

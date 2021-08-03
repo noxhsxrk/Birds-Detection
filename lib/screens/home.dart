@@ -13,14 +13,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: <Widget>[
-          SizedBox(width: 20.0),
-        ],
-      ),
       body: ListView(
         padding: EdgeInsets.only(left: 20.0),
         children: <Widget>[
+          SizedBox(height: 30.0),
           Padding(
             padding: EdgeInsets.only(right: 20.0),
             child: Text(
@@ -34,7 +30,6 @@ class _HomeState extends State<Home> {
           SizedBox(height: 10.0),
           SizedBox(height: 30.0),
           buildList(),
-
         ],
       ),
     );
@@ -42,8 +37,12 @@ class _HomeState extends State<Home> {
 
   buildList() {
     return Container(
-      height: 600,
-      child: ListView.builder(
+      height: 800,
+      child: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          mainAxisExtent: 300,
+          crossAxisCount: 2,
+        ),
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
         itemCount: birds.length,

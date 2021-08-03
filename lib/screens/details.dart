@@ -24,70 +24,159 @@ class _DetailsState extends State<Details> {
         children: <Widget>[
           ListView(
             padding: EdgeInsets.symmetric(horizontal: 20.0),
-            children: <Widget>[
-              SizedBox(height: 80.0),
+            children: [
+              SizedBox(height: 40.0),
               buildImage(),
               SizedBox(height: 20.0),
               Text(
                 "${birds[birdIndex]["name"]}",
                 style: TextStyle(
+                  fontFamily: 'Mitr',
                   fontSize: 32.0,
                   fontWeight: FontWeight.w900,
                 ),
               ),
-              SizedBox(height: 10.0),
-              SizedBox(height: 10.0),
               Text(
-                "\TEXT",
+                "${birdsData[birdIndex]["name_eng"]}",
                 style: TextStyle(
-                  fontSize: 27.0,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              SizedBox(height: 30.0),
-              Text(
-                "ข้อมูลนก",
-                style: TextStyle(
+                  fontFamily: 'Mitr',
                   fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 10.0),
-              Text(
-                "Sed porttitor lectus nibh. Cras ultricies ligula "
-                "sed magna dictum porta. Praesent sapien massa, "
-                "convallis a pellentesque nec, egestas non nisi. "
-                "Lorem ipsum dolor sit amet, consectetur adipiscing "
-                "elit. Nulla porttitor accumsan tincidunt. "
-                "Curabitur arcu erat, accumsan id imperdiet et, "
-                "porttitor at sem.",
-                style: TextStyle(
-                  fontSize: 15.0,
-                  color: Colors.grey,
                   fontWeight: FontWeight.w600,
+                  color: Colors.grey[700],
                 ),
               ),
-              SizedBox(height: 20.0),
-              Text(
-                "Photos",
-                style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 10.0),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                MainScreen(pageIndex: pageIndex)));
-                  },
-                  child: Text("ย้อนกลับ"))
-              //buildProductList(),
             ],
           ),
+          Container(
+            margin: const EdgeInsets.only(top: 470),
+            height: 500,
+            color: Colors.white,
+            child: ListView(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              children: <Widget>[
+                Text(
+                  "ลักษณะเด่น",
+                  style: TextStyle(
+                    fontFamily: 'Mitr',
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "         ${birdsData[birdIndex]["interesting_in"]}",
+                  style: TextStyle(
+                    fontFamily: 'Mitr',
+                    fontSize: 18.0,
+                    color: Colors.grey[800],
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(height: 20.0),
+                Divider(
+                  height: 20,
+                  thickness: 5,
+                  indent: 20,
+                  endIndent: 20,
+                ),
+                Text(
+                  "ที่อยู่อาศัย",
+                  style: TextStyle(
+                    fontFamily: 'Mitr',
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "         ${birdsData[birdIndex]["habitat"]}",
+                  style: TextStyle(
+                    fontFamily: 'Mitr',
+                    fontSize: 18.0,
+                    color: Colors.grey[800],
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Divider(
+                  height: 20,
+                  thickness: 5,
+                  indent: 20,
+                  endIndent: 20,
+                ),
+                SizedBox(height: 20.0),
+                Text(
+                  "อาหาร",
+                  style: TextStyle(
+                    fontFamily: 'Mitr',
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "         ${birdsData[birdIndex]["food"]}",
+                  style: TextStyle(
+                    fontFamily: 'Mitr',
+                    fontSize: 18.0,
+                    color: Colors.grey[800],
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(height: 20.0),
+                Text(
+                  "พฤติกรรม",
+                  style: TextStyle(
+                    fontFamily: 'Mitr',
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Divider(
+                  height: 20,
+                  thickness: 5,
+                  indent: 20,
+                  endIndent: 20,
+                ),
+                Text(
+                  "         ${birdsData[birdIndex]["habitat"]}",
+                  style: TextStyle(
+                    fontFamily: 'Mitr',
+                    fontSize: 18.0,
+                    color: Colors.grey[800],
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(height: 20.0),
+                Text(
+                  "Photos",
+                  style: TextStyle(
+                    fontFamily: 'Mitr',
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 200.0),
+
+                //buildProductList(),
+              ],
+            ),
+          ),
+          Center(
+              child: Align(
+            alignment: FractionalOffset(0.5, 0.95),
+            child: FloatingActionButton.extended(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              MainScreen(pageIndex: pageIndex)));
+                },
+                label: Text(
+                  "ย้อนกลับ",
+                  style: TextStyle(
+                    fontFamily: 'Mitr',
+                    fontSize: 30,
+                  ),
+                )),
+          ))
         ],
       ),
     );
@@ -112,7 +201,7 @@ class _DetailsState extends State<Details> {
 
   buildImage() {
     return Container(
-      height: 240.0,
+      height: 320.0,
       width: MediaQuery.of(context).size.width,
       child: Stack(
         children: <Widget>[
@@ -120,7 +209,7 @@ class _DetailsState extends State<Details> {
             borderRadius: BorderRadius.circular(15),
             child: Image.asset(
               "${birds[birdIndex]["img"]}",
-              height: 240.0,
+              height: 320.0,
               width: MediaQuery.of(context).size.width,
               fit: BoxFit.cover,
             ),
