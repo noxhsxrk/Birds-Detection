@@ -23,7 +23,7 @@ class BirdsList extends StatelessWidget {
         },
         child: Container(
           height: 300,
-          width: 380,
+          width: 350,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
@@ -31,10 +31,9 @@ class BirdsList extends StatelessWidget {
                 bird['name'],
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: bird['name'] == "นกกะรางหัวขวาน" ? 15 : 20,
                 ),
               ),
-              SizedBox(height: 10),
               ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: Image.asset(

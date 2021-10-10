@@ -40,7 +40,7 @@ class _StaticImageState extends State<StaticImage> {
         imageMean: 127.5,
         imageStd: 127.5,
         threshold: 0.4, // defaults to 0.1
-        numResultsPerClass: 10, // defaults to 5
+        numResultsPerClass: 11, // defaults to 5
         asynch: true // defaults to true
         );
     FileImage(image)

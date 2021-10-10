@@ -12,6 +12,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: ListView(
         padding: EdgeInsets.only(left: 20.0),
@@ -29,13 +32,14 @@ class _HomeState extends State<Home> {
           ),
           SizedBox(height: 10.0),
           SizedBox(height: 30.0),
-          buildList(),
+          buildList(screenHeight, screenWidth),
         ],
       ),
     );
   }
 
-  buildList() {
+  buildList(screenH, screenW) {
+    print(screenH);
     return Container(
       height: 800,
       child: GridView.builder(
