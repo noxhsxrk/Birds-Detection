@@ -10,6 +10,7 @@ class BoundingBox extends StatelessWidget {
   final int previewW;
   final double screenH;
   final double screenW;
+
   int index;
 
   BoundingBox(
@@ -46,8 +47,8 @@ class BoundingBox extends StatelessWidget {
       }
     }
 
-    route(detectlass) {
-      check(detectlass);
+    route(detectclass) async {
+      check(detectclass);
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -87,7 +88,7 @@ class BoundingBox extends StatelessWidget {
 
         return Positioned(
             left: math.max(0, x),
-            top: math.max(0, y),
+            top: math.max(0, y - 75),
             width: w,
             height: h,
             child: Container(

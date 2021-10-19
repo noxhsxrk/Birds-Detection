@@ -49,7 +49,7 @@ class _DetailsState extends State<Details> {
           ),
           Container(
             margin: const EdgeInsets.only(top: 470),
-            height: 500,
+            height: 600,
             color: Colors.white,
             child: ListView(
               padding: EdgeInsets.symmetric(horizontal: 30),
@@ -144,17 +144,6 @@ class _DetailsState extends State<Details> {
                   ),
                 ),
                 SizedBox(height: 20.0),
-                Text(
-                  "Photos",
-                  style: TextStyle(
-                    fontFamily: 'Mitr',
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 200.0),
-
-                //buildProductList(),
               ],
             ),
           ),
@@ -181,23 +170,6 @@ class _DetailsState extends State<Details> {
       ),
     );
   }
-
-  // buildProductList() {
-  //   return Container(
-  //     height: 100.0,
-  //     child: ListView.builder(
-  //       scrollDirection: Axis.horizontal,
-  //       shrinkWrap: true,
-  //       itemCount: birds.length,
-  //       itemBuilder: (BuildContext context, int index) {
-  //         Map bird = birds.reversed.toList()[index];
-  //         return ProductItem(
-  //           bird: bird,
-  //         );
-  //       },
-  //     ),
-  //   );
-  // }
 
   buildImage() {
     return Container(

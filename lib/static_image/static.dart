@@ -120,7 +120,7 @@ class _StaticImageState extends State<StaticImage> {
       return Container(
         child: Positioned(
             left: re["rect"]["x"] * factorX,
-            top: re["rect"]["y"] * factorY,
+            top: (re["rect"]["y"] * factorY) + 100,
             width: re["rect"]["w"] * factorX,
             height: re["rect"]["h"] * factorY,
             child: ((re["confidenceInClass"] > 0.50))

@@ -9,9 +9,11 @@ typedef void Callback(List<dynamic> list, int h, int w);
 class CameraFeed extends StatefulWidget {
   final List<CameraDescription> cameras;
   final Callback setRecognitions;
-  // The cameraFeed Class takes the cameras list and the setRecognitions
-  // function as argument
-  CameraFeed(this.cameras, this.setRecognitions);
+
+  CameraFeed(
+    this.cameras,
+    this.setRecognitions,
+  );
 
   @override
   _CameraFeedState createState() => new _CameraFeedState();
@@ -52,7 +54,7 @@ class _CameraFeedState extends State<CameraFeed> {
               imageMean: 127.5,
               imageStd: 127.5,
               numResultsPerClass: 1,
-              threshold: 0.4,
+              threshold: 0.55,
             ).then((recognitions) {
               widget.setRecognitions(recognitions, img.height, img.width);
               isDetecting = false;

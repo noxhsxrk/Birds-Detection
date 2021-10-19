@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
   buildList(screenH, screenW) {
     print(screenH);
     return Container(
-      height: 800,
+      height: MediaQuery.of(context).size.height * 0.85,
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           mainAxisExtent: 300,
