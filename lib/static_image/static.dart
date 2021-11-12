@@ -102,6 +102,8 @@ class _StaticImageState extends State<StaticImage> {
       index = 8;
     } else if (detectclass == "BARN OWL") {
       index = 9;
+    } else if (detectclass == "NOT BIRD") {
+      index = -1;
     }
   }
 
@@ -117,35 +119,39 @@ class _StaticImageState extends State<StaticImage> {
 
     return _recognitions.map((re) {
       detectedClass = re["detectedClass"];
-      return Container(
-        child: Positioned(
-            left: re["rect"]["x"] * factorX,
-            top: (re["rect"]["y"] * factorY) + 100,
-            width: re["rect"]["w"] * factorX,
-            height: re["rect"]["h"] * factorY,
-            child: ((re["confidenceInClass"] > 0.50))
-                ? Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                      color: blue,
-                      width: 3,
-                    )),
-                    child: InkWell(
-                      onTap: () {
-                        route(re["detectedClass"]);
-                      },
-                      child: Text(
-                        "${re["detectedClass"]} ${(re["confidenceInClass"] * 100).toStringAsFixed(0)}%",
-                        style: TextStyle(
-                          background: Paint()..color = blue,
-                          color: Colors.white,
-                          fontSize: 15,
+      if (detectedClass == "NOT BIRD") {
+        return Container();
+      } else {
+        return Container(
+          child: Positioned(
+              left: re["rect"]["x"] * factorX,
+              top: (re["rect"]["y"] * factorY) + 100,
+              width: re["rect"]["w"] * factorX,
+              height: re["rect"]["h"] * factorY,
+              child: ((re["confidenceInClass"] > 0.50))
+                  ? Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                        color: blue,
+                        width: 3,
+                      )),
+                      child: InkWell(
+                        onTap: () {
+                          route(re["detectedClass"]);
+                        },
+                        child: Text(
+                          "${re["detectedClass"]} ${(re["confidenceInClass"] * 100).toStringAsFixed(0)}%",
+                          style: TextStyle(
+                            background: Paint()..color = blue,
+                            color: Colors.white,
+                            fontSize: 15,
+                          ),
                         ),
                       ),
-                    ),
-                  )
-                : Container()),
-      );
+                    )
+                  : Container()),
+        );
+      }
     }).toList();
   }
 

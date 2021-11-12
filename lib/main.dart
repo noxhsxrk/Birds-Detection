@@ -18,14 +18,10 @@ Future<void> main() async {
 }
 
 void getBoolVal() async {
-  print('do');
   SharedPreferences prefs = await SharedPreferences.getInstance();
   if (prefs.containsKey('introPageStat')) {
-    print(prefs.getBool('introPageStat'));
-    print(prefs.getBool('introPageStat') ?? 0);
     introPageStat = prefs.getBool('introPageStat') ?? 0;
   } else {
-    print('not do');
     introPageStat = true;
   }
 }

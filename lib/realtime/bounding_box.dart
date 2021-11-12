@@ -44,6 +44,8 @@ class BoundingBox extends StatelessWidget {
         index = 8;
       } else if (detectclass == "BARN OWL") {
         index = 9;
+      } else if (detectclass == "NOT BIRD") {
+        index = -1;
       }
     }
 
@@ -58,8 +60,11 @@ class BoundingBox extends StatelessWidget {
                   )));
     }
 
+    String detectedClass;
     List<Widget> _renderBox() {
       return results.map((re) {
+        detectedClass = re["detectedClass"];
+
         var _x = re["rect"]["x"];
         var _w = re["rect"]["w"];
         var _y = re["rect"]["y"];
@@ -85,34 +90,37 @@ class BoundingBox extends StatelessWidget {
           h = _h * scaleH;
           if (_y < difH / 2) h -= (difH / 2 - _y) * scaleH;
         }
-
-        return Positioned(
-            left: math.max(0, x),
-            top: math.max(0, y - 75),
-            width: w,
-            height: h,
-            child: Container(
-              padding: EdgeInsets.only(top: 5.0, left: 5.0),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Color.fromRGBO(37, 213, 253, 1.0),
-                  width: 3.0,
-                ),
-              ),
-              child: InkWell(
-                onTap: () {
-                  route(re["detectedClass"]);
-                },
-                child: Text(
-                  "${re["detectedClass"]} ${(re["confidenceInClass"] * 100).toStringAsFixed(0)}%",
-                  style: TextStyle(
+        if (detectedClass != "NOT BIRD") {
+          return Positioned(
+              left: math.max(0, x),
+              top: math.max(0, y - 75),
+              width: w,
+              height: h,
+              child: Container(
+                padding: EdgeInsets.only(top: 5.0, left: 5.0),
+                decoration: BoxDecoration(
+                  border: Border.all(
                     color: Color.fromRGBO(37, 213, 253, 1.0),
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.bold,
+                    width: 3.0,
                   ),
                 ),
-              ),
-            ));
+                child: InkWell(
+                  onTap: () {
+                    route(re["detectedClass"]);
+                  },
+                  child: Text(
+                    "${re["detectedClass"]} ${(re["confidenceInClass"] * 100).toStringAsFixed(0)}%",
+                    style: TextStyle(
+                      color: Color.fromRGBO(37, 213, 253, 1.0),
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ));
+        } else {
+          return Container();
+        }
       }).toList();
     }
 
