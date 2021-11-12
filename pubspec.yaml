@@ -34,7 +34,7 @@ dependencies:
   camera: 0.8.1+7
   flutter_launcher_icons: ^0.9.1
   introduction_screen: ^2.1.0
-  shared_preferences: ^2.0.0
+  shared_preferences: ^2.0.8
 
 flutter_icons:
   #  image_path: "assets/images/icon-128x128.png"

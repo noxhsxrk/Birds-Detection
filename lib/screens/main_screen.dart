@@ -7,6 +7,7 @@ import 'package:birds_detection/screens/home.dart';
 import 'package:birds_detection/static_image/static.dart';
 import 'package:birds_detection/realtime/live_camera.dart';
 import 'package:birds_detection/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MainScreen extends StatefulWidget {
   final String pageIndex;
@@ -29,8 +30,12 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+  bool introPageStat;
   @override
   Widget build(BuildContext context) {
+    addBooleanValue();
+    getBoolVal();
+
     if (pageIndex == "home") {
       _currentIndex = 0;
     } else if (pageIndex == "live") {
@@ -74,5 +79,16 @@ class _MainScreenState extends State<MainScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> addBooleanValue() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('introPageStat', false);
+  }
+
+  void getBoolVal() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool pageStat = prefs.getBool('introPageStat') ?? false;
+    introPageStat = pageStat;
   }
 }

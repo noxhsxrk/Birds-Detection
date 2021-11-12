@@ -1,5 +1,5 @@
 import 'package:birds_detection/screens/main_screen.dart';
-import 'package:birds_detection/widgets/preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter/material.dart';
 
@@ -58,10 +58,9 @@ class OnboardingPage extends StatelessWidget {
               heightFactor: 100,
             ),
             footer: ElevatedButton(
-              onPressed: () async {
+              onPressed: () {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => MainScreen()));
-                await UserPreferences.setIntroPageStat("false");
               },
               child: Text(
                 'เริ่มต้นใช้งานแอพพลิเคชัน',
@@ -83,7 +82,6 @@ class OnboardingPage extends StatelessWidget {
       onDone: () async {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => MainScreen()));
-        await UserPreferences.setIntroPageStat("false");
       },
       dotsDecorator: getDotsDecoration(),
     );
